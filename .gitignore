@@ -4,4 +4,6 @@ personal-9894.md
 # Targets Windows & Unix temporary files
 ~$*
 *~
+.DS_Store
 */.DS_Store
+.vscode
