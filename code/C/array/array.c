@@ -132,15 +132,15 @@ void check_address(void *p) {
     }
 }
 
-int main(int argc, const char * argv[]) {
-    JArray *arr = jarray_new(32);
-    for (int i = 0; i < 4; i++) {
-        jarray_push(arr, i);
-        jarray_print(arr);
-    }
-    jarray_pop(arr);
-    jarray_print(arr);
-    jarray_insert(arr, 2, 2222);
-    jarray_print(arr);
-    return 0;
-}
+// int main(int argc, const char * argv[]) {
+//     JArray *arr = jarray_new(32);
+//     for (int i = 0; i < 4; i++) {
+//         jarray_push(arr, i);
+//         jarray_print(arr);
+//     }
+//     jarray_pop(arr);
+//     jarray_print(arr);
+//     jarray_insert(arr, 2, 2222);
+//     jarray_print(arr);
+//     return 0;
+// }
