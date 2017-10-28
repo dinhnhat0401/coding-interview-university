@@ -7,6 +7,7 @@ typedef struct Node {
 
 typedef struct SListImplement {
     Node *head;
+    Node *tail;
 }SList;
 
 // initialize a SList
