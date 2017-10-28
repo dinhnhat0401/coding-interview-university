@@ -129,7 +129,7 @@ void erase(SList *list, int index) {
         current = current->next;
         counter++;
     }
-    printf("Cannot find item with that index\n");
+    printf("Index out of bound\n");
     exit(EXIT_FAILURE);
 }
 
@@ -138,17 +138,31 @@ bool empty(SList *list) {
     return list->head == 0;
 }
 
-// add a node with value before a node
-void addBefore(SList *list, Node *node, int value) {
-
-}
-
-// add a node after a node
-void addAfter(SList *list, Node *node, int value) {
-    if (list->head == 0) {
-        printf();
+// returns the value of the nth item (starting at 0 for first)
+int value_at(SList *list, int n) {
+    int counter = 0;
+    Node *current = list->head;
+    while (current != 0) {
+        if (counter == n) {
+            return current->key;
+        }
+        current = current->next;
+        counter++;
     }
+    printf("Index out of bound\n");
+    exit(EXIT_FAILURE);
 }
+
+// will implement with tail
+// // returns the value of the node at nth position from the end of the list
+// int value_n_from_end(int n) {
+
+// }
+
+// // reverses the list
+// void reverse() {
+
+// }
 
 // Checks to see if given value is valid for memory, and exits if so
 void check_address(void *p) {
@@ -175,6 +189,7 @@ int main(int argc, const char * argv[]) {
     pushFront(list, 60);
     pushFront(list, 65);
     printSList(list);
+    printf("element at 3th: %d\n", value_at(list, 2));
     printf("top front %d\n", topFront(list));
     printSList(list);
     printf("pop front %d\n", popFront(list));
@@ -189,6 +204,6 @@ int main(int argc, const char * argv[]) {
     printSList(list);
     // erase(list, -1);
     // printSList(list);
-    erase(list, 2);
-    printSList(list);
+    // erase(list, 2);
+    // printSList(list);
 }
