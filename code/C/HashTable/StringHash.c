@@ -118,26 +118,3 @@ void printHash(HashTable* t) {
     }
     printf("]\n\n\n");
 }
-
-int main(int argc, const char* argv[]) {
-    HashTable *t = initialize(kTableSize);
-    // printHash(t);
-    add(t, "Viet Nam", "Ha Noi");
-    // printHash(t);
-    add(t, "Viet Nam", "Ha Noi 2");
-    // printHash(t);
-    add(t, "Japan", "Tokyo");
-    add(t, "Germany", "Berlin");
-    add(t, "Holland", "Amsterdam");
-    add(t, "China", "Beijing");
-    add(t, "France", "Paris");
-    add(t, "Brasil", "Sao Paulo");
-    add(t, "HongKong", "HongKong");
-    printHash(t);
-    add(t, "Cambodia", "Cambodia");
-    printHash(t);
-    removeKey(t, "Japan");
-    printHash(t);
-    printf("Japan key is exist ? : %d", exists(t, "Japan"));
-    return 0;
-}
