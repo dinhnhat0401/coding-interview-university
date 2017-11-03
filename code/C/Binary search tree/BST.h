@@ -19,5 +19,5 @@ int getHeight(Node *root);
 int getMin(Node *root);
 int getMax(Node *root);
 bool isBinarySearchTree(Node *root);
-void deleteValue(Node *root, int val);
-int getSuccessor(Node *root, int val);
+Node* deleteValue(Node *root, int val);
+Node* getSuccessor(Node *root, int val);

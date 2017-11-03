@@ -39,7 +39,7 @@ void testRest() {
     root = insert(root, 18);
     assert(isBinarySearchTree(root) == true);
     assert(isInTree(root, 11) == true);
-    deleteValue(root, 11);
+    root = deleteValue(root, 11);
     assert(isInTree(root, 11) == false);
-    assert(getSuccessor(root, 20) == 21);
+    assert(getSuccessor(root, 20)->val == 21);
 }

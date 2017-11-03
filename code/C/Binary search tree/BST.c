@@ -98,10 +98,73 @@ bool isBSTUtil(Node *root, int min, int max) {
 bool isBinarySearchTree(Node *root) {
     return isBSTUtil(root, -2147483647, 2147483647);
 }
-void deleteValue(Node *root, int val) {
-    if (isInTree(root, val) != true) return;
-    
+Node* findNode(Node *root, int val) {
+    if (root == NULL) return NULL;
+    Node *cur = root;
+    while (cur != NULL) {
+        if (cur->val == val) return cur;
+        else if (cur->val < val) cur = cur->right;
+        else cur = cur->left;
+    }
+    return NULL;
 }
-int getSuccessor(Node *root, int val) {
-    
+bool isLeaf(Node *node) {
+    return (node->left == NULL && node->right == NULL);
+}
+void deleteTree(Node *root) {
+    if (root == NULL) return;
+    deleteTree(root->left);
+    deleteTree(root->right);
+    free(root);
+}
+Node* getMinNode(Node *root) {
+    if (root == NULL) return NULL;
+    Node *current = root;
+    while (current->left != NULL) current = current->left;
+    return current;
+}
+Node* deleteValue(Node *root, int val) {
+    if (isInTree(root, val) != true) return root;
+    Node* current = findNode(root, val);
+    if (current == NULL) return root;
+    if (current->left == NULL && current->right == NULL) {
+        free(current);
+        current = NULL;
+        return root;
+    }
+    else if (current->right == NULL) {
+        Node *tmp = current;
+        current = current->left;
+        free(tmp);
+        tmp = NULL;
+        return root;
+    } else if (current->left == NULL) {
+        Node *tmp = current;
+        current = current->right;
+        free(tmp);
+        tmp = NULL;
+        return root;
+    } else {
+        Node *successor = getMinNode(current->right);
+        current->val = successor->val;
+        return deleteValue(successor, successor->val);
+    }
+}
+
+Node* getSuccessor(Node *root, int val) {
+    if (root == NULL) return NULL;
+    Node *current = findNode(root, val);
+    if (current == NULL) return NULL;
+    if (current->right != NULL) return getMinNode(current->right);
+    Node *ancestor = root;
+    Node *successor = NULL;
+    while (ancestor != current) {
+        if (ancestor->val < val) {
+            ancestor = ancestor->right;
+        } else {
+            successor = ancestor;
+            ancestor = ancestor->left;
+        }
+    }
+    return successor;
 }
