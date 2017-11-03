@@ -13,7 +13,9 @@ void testInsert() {
     root = insert(root, 38);
     root = insert(root, 18);
     root = insert(root, 18);
+    printTree(root);
     assert(getNodeCount(root) == 6);
+    deleteTree(root);
 }
 
 void testTreeSize() {
@@ -27,6 +29,7 @@ void testTreeSize() {
     assert(getHeight(root) == 3);
     assert(getMax(root) == 38);
     assert(getMin(root) == 5);
+    deleteTree(root);
 }
 
 void testRest() {
@@ -42,4 +45,5 @@ void testRest() {
     root = deleteValue(root, 11);
     assert(isInTree(root, 11) == false);
     assert(getSuccessor(root, 20)->val == 21);
+    deleteTree(root);
 }

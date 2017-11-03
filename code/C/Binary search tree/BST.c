@@ -56,13 +56,46 @@ bool isInTree(Node *root, int val) {
     }
     return false;
 }
-void printTree(Node *root);
-void deleteTree(Node *root);
+
+void preOrder(Node *root) {
+    if (root == NULL) return;
+    printf("%d ", root->val);
+    preOrder(root->left);
+    preOrder(root->right);
+}
+
+void postOrder(Node *root) {
+    if (root == NULL) return;
+    postOrder(root->left);
+    postOrder(root->right);
+    printf("%d ", root->val);
+}
+
+void inOrder(Node *root) {
+    if (root == NULL) return;
+    inOrder(root->left);
+    printf("%d ", root->val);
+    inOrder(root->right);
+}
+
+void printTree(Node *root) {
+    printf("preorder\n");
+    preOrder(root);
+    printf("\n\n");
+
+    printf("inorder\n");
+    inOrder(root);
+    printf("\n\n");
+
+    printf("postorder\n");
+    postOrder(root);
+    printf("\n\n");
+}
+
 int getHeight(Node *root) {
     if (root == NULL) return -1;
     int a = getHeight(root->left);
     int b = getHeight(root->right);
-    // int tmp = a > b : a ? b;
     return 1 + (a > b ? a : b);
 }
 int getMin(Node *root) {
