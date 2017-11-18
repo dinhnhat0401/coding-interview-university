@@ -65,6 +65,13 @@ void test_add_edge() {
         visited[i] = false;
         exposed[i] = false;
     }
-    dfs_recusive(g, 5, visited, exposed);
+    dfs_recursive(g, 5, visited, exposed);
+    printf("\n");
+    for (int i = 0; i < g->vertice_number; i++) {
+        visited[i] = false;
+        exposed[i] = false;
+    }
+    dfs_stack(g, 5, visited, exposed);
+    printf("\n");
     destroyGraph(g);
 }

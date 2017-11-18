@@ -68,32 +68,6 @@ void printGraph(Graph *g) {
     printf("\n\n");
 }
 
-void dfs_recusive(Graph *g, int v, bool *visited, bool *exposed) {
-    if (v < 0 || v > g->vertice_number) {
-        printf("Can not dfs from not existed vertice!");
-        return;
-    }
-    preVisit(v, visited);
-    // bool visited[g->vertice_number];
-    printf("[%d]->", v);
-    Node *n = *(g->vertices + v);
-    while (n != NULL) {
-        if (visited[n->val] != true) dfs_recusive(g, n->val, visited, exposed);
-        n = n->next;
-    }
-    posVisit(v, exposed);
-}
-
-void preVisit(int v, bool *visited) {
-    // printf("\npre visit");
-    visited[v] = true;
-}
-
-void posVisit(int v, bool *exposed) {
-    // printf("\npos visit");
-    exposed[v] = true;
-}
-
 void destroyGraph(Graph *g) {
     for (int i = 0; i < g->vertice_number; i++) {
         destroyLinkedList(*(g->vertices + i));
@@ -110,4 +84,63 @@ void destroyLinkedList(Node *s) {
         current = s;
     }
     s = NULL;
+}
+
+void dfs_recursive(Graph *g, int v, bool *visited, bool *exposed) {
+    if (v < 0 || v > g->vertice_number) {
+        printf("Can not dfs from not existed vertice!");
+        return;
+    }
+    preVisit(v, visited);
+    printf("[%d]->", v);
+    Node *n = *(g->vertices + v);
+    while (n != NULL) {
+        if (visited[n->val] != true) dfs_recusive(g, n->val, visited, exposed);
+        n = n->next;
+    }
+    posVisit(v, exposed);
+}
+
+void preVisit(int v, bool *visited) {
+    visited[v] = true;
+}
+
+void posVisit(int v, bool *exposed) {
+    exposed[v] = true;
+}
+
+void dfs_stack(Graph *g, int v, bool *visited, bool *exposed) {
+    if (v < 0 || v > g->vertice_number) {
+        printf("Can not dfs from not existed vertice!");
+        return;
+    }
+    Node *stack = NULL;
+    stack = push(stack, v);
+    while (stack != NULL) {
+        printf("[%d]->", stack->val);
+        visited[stack->val] = true;
+        Node *ver = *(g->vertices + stack->val);
+        stack = pop(stack);
+        while (ver != NULL) {
+            if (!visited[ver->val]) {
+                visited[ver->val] = true;
+                stack = push(stack, ver->val);
+            }
+            ver = ver->next;
+        }
+    }
+}
+
+Node* pop(Node *head) {
+    Node *tmp = head->next;
+    free(head);
+    head = tmp;
+    return head;
+}
+
+Node* push(Node *head, int val) {
+    Node *n = (Node*)malloc(sizeof(Node));
+    n->val = val;
+    n->next = head;
+    return n;
 }
