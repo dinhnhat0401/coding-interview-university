@@ -95,7 +95,7 @@ void dfs_recursive(Graph *g, int v, bool *visited, bool *exposed) {
     printf("[%d]->", v);
     Node *n = *(g->vertices + v);
     while (n != NULL) {
-        if (visited[n->val] != true) dfs_recusive(g, n->val, visited, exposed);
+        if (visited[n->val] != true) dfs_recursive(g, n->val, visited, exposed);
         n = n->next;
     }
     posVisit(v, exposed);
@@ -143,4 +143,53 @@ Node* push(Node *head, int val) {
     n->val = val;
     n->next = head;
     return n;
+}
+
+void bfs_queue(Graph *g, int v, bool *visited) {
+    if (v < 0 || v > g->vertice_number) {
+        printf("Can not dfs from not existed vertice!");
+        return;
+    }
+    Queue *q = (Queue*)malloc(sizeof(Queue));
+    q->head = NULL;
+    q->tail = NULL;
+    q = enqueue(q, v);
+    while(q->head != NULL) {
+        printf("[%d]->", q->head->val);
+        visited[q->head->val] = true;
+        Node *ver = *(g->vertices + q->head->val);
+        q = dequeue(q);
+        while (ver != NULL) {
+            if (!visited[ver->val]) {
+                visited[ver->val] = true;
+                q = enqueue(q, ver->val);
+            }
+            ver = ver->next;
+        }
+    }
+}
+
+Queue* dequeue(Queue *q) {
+    if (q->head == NULL) {
+        printf("Can not dequeue an empty array!");
+        return NULL;
+    }
+    Node *tmp = q->head;
+    free(q->head);
+    q->head = tmp->next;
+    return q;
+}
+
+Queue* enqueue(Queue *q, int val) {
+    Node *n = (Node*)malloc(sizeof(Node));
+    n->val = val;
+    n->next = NULL;
+    // Tại sao nếu check bằng q->tail thì bị lỗi ????
+    if (q->head == NULL) {
+        q->head = n;
+    } else {
+        q->tail->next = n;
+    }
+    q->tail = n;
+    return q;
 }

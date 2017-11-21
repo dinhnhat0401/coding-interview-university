@@ -8,6 +8,11 @@ typedef struct Node {
     struct Node *next;
 } Node;
 
+typedef struct Queue {
+    Node *head;
+    Node *tail;
+} Queue;
+
 typedef struct Graph {
     int vertice_number;
     int edge_number;
@@ -29,3 +34,6 @@ void deleteLast(Node *s);
 void dfs_stack(Graph *g, int v, bool *visited, bool *exposed);
 Node* pop(Node *head);
 Node* push(Node *head, int val);
+Queue* enqueue(Queue *q, int val);
+Queue* dequeue(Queue *q);
+void bfs_queue(Graph *g, int v, bool *visited);

@@ -73,5 +73,11 @@ void test_add_edge() {
     }
     dfs_stack(g, 5, visited, exposed);
     printf("\n");
+    for (int i = 0; i < g->vertice_number; i++) {
+        visited[i] = false;
+        exposed[i] = false;
+    }
+    bfs_queue(g, 5, visited);
+    printf("\n");
     destroyGraph(g);
 }
