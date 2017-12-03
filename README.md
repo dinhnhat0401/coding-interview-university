@@ -813,20 +813,20 @@ Graphs can be used to represent many problems in computer science, so this secti
     - [ ] [Aduni: Graph Alg. IV: Intro to geometric algorithms - Lecture 9 (video)](https://www.youtube.com/watch?v=XIAQRlNkJAw&list=PLFDnELG9dpVxQCxuD-9BSy2E7BWY3t5Sm&index=9)
     - [ ] ~~[CS 61B 2014 (starting at 58:09) (video)](https://youtu.be/dgjX4HdMI-Q?list=PL-XXv-cvA_iAlnI-BQr9hjqADPBtujFJd&t=3489)~~
     - [ ] [CS 61B 2014: Weighted graphs (video)](https://archive.org/details/ucberkeley_webcast_zFbq8vOZ_0k)
-    - [ ] [Greedy Algorithms: Minimum Spanning Tree (video)](https://www.youtube.com/watch?v=tKwnms5iRBU&index=16&list=PLUl4u3cNGP6317WaSNfmCvGym2ucw3oGp)
+    - [x] [Greedy Algorithms: Minimum Spanning Tree (video)](https://www.youtube.com/watch?v=tKwnms5iRBU&index=16&list=PLUl4u3cNGP6317WaSNfmCvGym2ucw3oGp)
     - [ ] [Strongly Connected Components Kosaraju's Algorithm Graph Algorithm (video)](https://www.youtube.com/watch?v=RpgcYiky7uw)
 
 - Full Coursera Course:
     - [ ] [Algorithms on Graphs (video)](https://www.coursera.org/learn/algorithms-on-graphs/home/welcome)
 
 - I'll implement:
-    - [ ] DFS with adjacency list (recursive)
-    - [ ] DFS with adjacency list (iterative with stack)
+    - [x] DFS with adjacency list (recursive)
+    - [x] DFS with adjacency list (iterative with stack)
     - [ ] DFS with adjacency matrix (recursive)
     - [ ] DFS with adjacency matrix (iterative with stack)
-    - [ ] BFS with adjacency list
+    - [x] BFS with adjacency list
     - [ ] BFS with adjacency matrix
-    - [ ] single-source shortest path (Dijkstra)
+    - [x] single-source shortest path (Dijkstra)
     - [ ] minimum spanning tree
     - DFS-based algorithms (see Aduni videos above):
         - [ ] check for cycle (needed for topological sort, since we'll check for cycle before starting)
