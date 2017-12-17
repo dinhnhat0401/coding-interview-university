@@ -10,7 +10,12 @@ public class main {
         //     StdOut.println(e);
         // StdOut.println(mst.weight());
 
-        PrimMST mst = new PrimMST(G);
+        // PrimMST mst = new PrimMST(G);
+        // for (Edge e : mst.edges())
+        //     StdOut.println(e);
+        // StdOut.println(mst.weight());
+
+        KruskalMST mst = new KruskalMST(G);
         for (Edge e : mst.edges())
             StdOut.println(e);
         StdOut.println(mst.weight());
