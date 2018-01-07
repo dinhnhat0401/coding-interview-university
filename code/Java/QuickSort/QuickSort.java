@@ -19,7 +19,7 @@ class QuickSort {
         int j = hi + 1;
 
         while (true) {
-            System.out.printf("%d %d\n", i, j);
+            // System.out.printf("%d %d\n", i, j);
             while (arr[++i].compareTo(arr[lo]) <= 0) {
                 if (i == hi) break;
             }
